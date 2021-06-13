@@ -14,18 +14,42 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 4px;
-    border: 3px solid green;
+    border: 3px solid #6272a4;
 }
 .header-title-main {
-    color: #FFF;
+    color: #f8f8f2;
+}
+.header-main-page {
+    color: #8be9fd;
+}
+.header-design {
+    color: #50fa7b;
+}
+.header-software {
+    color: #ffb86c;
+}
+.header-random {
+    color: #ff79c6;
 }
 .header-profilepic {
     width: 50px;
     height: 50px;
-    padding-left:4px;
+    padding-left: 15px;
 }
 .header-profile {
     display: flex;
+    padding-right: 4px; 
     align-items: center;
     justify-content: space-between;
+    color: #bd93f9;
+}
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #f1fa8c;
+}
+a:active {
+    text-decoration: underline;
 }
