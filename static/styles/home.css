@@ -1,0 +1,59 @@
+.path-cont {
+	position: fixed;
+	background-color: #282a36;
+	bottom: 0;
+	left: 0;
+	align-items: center;
+	text-align: center;
+	border-right: 2px solid #FFF;
+	border-top: 2px solid #FFF;
+	border-radius: 2px;
+}
+
+.path-text {
+	text-align: center;
+	margin: 5px;
+}
+
+.request {
+	border: 2px solid lime;
+}
+
+.nothing {
+	width: 1000px;
+	height: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -140px;
+}
+
+.create-field {
+	position: fixed;
+	background-color: #282a36;
+	bottom: 0;
+	right: 0;
+	align-items: center;
+	text-align: center;
+	border-left: 2px solid #FFF;
+	border-top: 2px solid #FFF;
+	border-radius: 2px;
+}
+
+.create-field-title {
+	padding: 5px
+}
+
+.createbtn {
+	margin: 5px;
+	padding: 10px 20px;
+	border: none;
+	color: #000;
+	display: inline-block;
+	cursor: pointer;
+	background-color: #DADADA;
+}
+
+.create-field-splash {
+	margin: 5px;
+}

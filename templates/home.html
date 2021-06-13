@@ -4,8 +4,31 @@
 Home Page
 {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/home.css') }}" />
+{% endblock %}
+
 {% block content %}
 
-<p>Hello World</p>
+<div class="path-cont">
+	<h5 class="path-text">\\ Main </h5>
+</div>
+
+{% if reqs %}
+{% for r in reqs %}
+<div class="request">
+	<h2 class="request-title">{{ r.title }} | {{ r.user }}</h2>
+	<p class="request-desc">{{ r.description }}</p>
+</div>
+{% endfor %}
+{% else %}
+<h2 class="nothing">Nothing to see here yet :(</h2>
+{% endif %}
+
+<form class="create-field" method="POST">
+	<h2 class="create-field-title">Make a Request</h2>
+	<input class="createbtn" type="submit" value="Create"  name="createreq" />
+	<h5 class="create-field-splash">No account required!</h5>
+</form>
 
 {% endblock %}
