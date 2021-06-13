@@ -16,12 +16,14 @@
 <body>
 	<header>
 	<h1 class="header-title-main">Unnamed Site</h1>
-	<a class="header-links"><h3 class="header-title">Main Page</h3></a>
-	<a class="header-links"><h3 class="header-title">Design</h3></a>
-	<a class="header-links"><h3 class="header-title">Software</h3></a>
-	<a class="header-links"><h3 class="header-title">Random</h3></a>
+	<h3 class="separator"> | </h3>
+	<a class="header-links"><h3 class="header-main-page">Main Page</h3></a>
+	<a class="header-links"><h3 class="header-design">Design</h3></a>
+	<a class="header-links"><h3 class="header-software">Software</h3></a>
+	<a class="header-links"><h3 class="header-random">Random</h3></a>
+	<h3 class="separator"> | </h3>
 	<div class="header-profile">
-		<a><h3>Username</h3>someinfo</a>
+		<a><h3>Username</h3></a>
 		<img class="header-profilepic" src={{ url_for('static', filename='anonuser.png') }}/>
 	</div>
 	</header>
