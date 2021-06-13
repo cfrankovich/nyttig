@@ -1,0 +1,31 @@
+html {
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: #DADADA;
+}
+body {
+    background-color: #282a36;
+}
+header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    border: 3px solid green;
+}
+.header-title-main {
+    color: #FFF;
+}
+.header-profilepic {
+    width: 50px;
+    height: 50px;
+    padding-left:4px;
+}
+.header-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
