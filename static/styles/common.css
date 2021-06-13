@@ -16,50 +16,18 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 4px;
-<<<<<<< HEAD
     border-bottom: 3px solid #FFF;
-=======
-    border: 3px solid #6272a4;
->>>>>>> 2db1f8631639440f8e599581f8e84c721c9c9f77
 }
 .header-title-main {
-    color: #f8f8f2;
-}
-.header-main-page {
-    color: #8be9fd;
-}
-.header-design {
-    color: #50fa7b;
-}
-.header-software {
-    color: #ffb86c;
-}
-.header-random {
-    color: #ff79c6;
+    color: #FFF;
 }
 .header-profilepic {
     width: 50px;
     height: 50px;
-    padding-left: 15px;
+    padding-left:4px;
 }
 .header-profile {
     display: flex;
-    padding-right: 4px; 
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
 }
-=======
-    color: #bd93f9;
-}
-a:link {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-    color: #f1fa8c;
-}
-a:active {
-    text-decoration: underline;
-}
->>>>>>> 2db1f8631639440f8e599581f8e84c721c9c9f77
