@@ -3,6 +3,7 @@
 from flask import Flask, redirect, render_template, request, session, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
+from urllib.request import urlopen
 
 app = Flask(__name__)
 app.secret_key = "123"
@@ -11,19 +12,21 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 app.permanent_session_lifetime = timedelta(days=5)
 
-class REQUESTS(db.Model):
+class REQUESTS2(db.Model):
 	__tablename__ = 'Requests'
 	_id = db.Column('id', db.Integer, primary_key=True) # id of post (will be used to find posts)
 	title = db.Column('title', db.String(255)) # title of post # max 255 chars #
 	description = db.Column('desc', db.String(2000)) # description of post # max 2000 chars #
-	user = db.Column('user', db.String(100)) # username is 100 chars so there #
+	user = db.Column('user', db.String(255)) # username is 100 chars so there #
 	img = db.Column('path', db.String(255)) # path shouldnt really be that long... #
-	
-	def __init__(self, title, description, user, path):
+	tag = db.Column('tag', db.String(255))
+
+	def __init__(self, title, description, user, path, tag):
 		self.title = title
 		self.description = description
 		self.user = user
-		self.path = path
+		self.img = path
+		self.tag = tag
 
 
 class USER(db.Model):
@@ -42,18 +45,68 @@ class USER(db.Model):
 		self.description = d
 		self.img = p
 
+
+def isimage(url):
+	formats = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg']
+	try:
+		req = urlopen(url)
+		meta = req.info()
+	except:
+		return False 
+	return req.headers['content-type'] in formats
+
+
+def getlist(arr, word):
+	tbr = []
+	for i in range(len(arr)):
+		if word in arr[i].tag:
+			tbr.append(arr[i])
+	return tbr
+
+
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/home/', methods=['POST', 'GET'])
 def home():
 	if request.method == 'POST':
 		return redirect(url_for('create'))
-	return render_template('home.html', reqs=REQUESTS.query.all()) 
+	return render_template('home.html', reqs=REQUESTS2.query.all(), pagetitle='Home Page', pagepath='Home') 
+
+
+@app.route('/design/', methods=['POST', 'GET'])
+def design():
+	if request.method == 'POST':
+		return redirect(url_for('create'))
+
+	REQUESTS2.query.all()
+	sendme = getlist(REQUESTS2.query.all(), 'design')
+	return render_template('home.html', reqs=sendme, pagetitle='Design Page', pagepath='Design')
+
+
+@app.route('/software/', methods=['POST', 'GET'])
+def software():
+	if request.method == 'POST':
+		return redirect(url_for('create'))
+
+	REQUESTS2.query.all()
+	sendme = getlist(REQUESTS2.query.all(), 'software')
+	return render_template('home.html', reqs=sendme, pagetitle='Software Page', pagepath='Software')
+
+@app.route('/discussion/', methods=['POST', 'GET'])
+def discussion():
+	if request.method == 'POST':
+		return redirect(url_for('create'))
+
+	REQUESTS2.query.all()
+	sendme = getlist(REQUESTS2.query.all(), 'discussion')
+	return render_template('home.html', reqs=sendme, pagetitle='Discussion Page', pagepath='Disc')
+
 
 @app.route('/delete/')
 def delete():
-	removelol = REQUESTS.query.filter_by().delete()
+	removelol = REQUESTS2.query.filter_by().delete()
 	db.session.commit()
 	return '<h1>Deleted</h1>'
+
 
 @app.route('/create/', methods=['POST', 'GET'])
 def create():
@@ -62,9 +115,31 @@ def create():
 		title = request.form['title']
 		desc = request.form['desc']
 		un = request.form['username']
-		path = request.form['path']	
-		newReq = REQUESTS(title, desc, un, path)
-		db.session.add(newReq)
+		path = request.form['path']
+		tags = ''
+		try:
+			des = request.form['design']
+			tags += 'design  '
+		except:
+			pass
+		try:
+			sof = request.form['software']
+			tags += 'software  '
+		except:
+			pass
+		try:
+			dis = request.form['discussion']
+			tags += 'discussion  '
+		except:
+			pass
+
+		if not un:
+			un = 'anon'
+		if path and not isimage(path):
+			print('not image')
+		
+		newReq = REQUESTS2(title, desc, un, path, tags) 
+		db.session.add(newReq)	
 		db.session.commit()
 		return redirect(url_for('home'))
 	return render_template('create.html', display=returnme) 

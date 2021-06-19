@@ -6,13 +6,28 @@ Create Page
 
 {% block content %}
 
-<form class="testform" method="POST">
-	<input type="text" name="title" placeholder="title" />
-	<input type="text" name="desc" placeholder="desc" />
-	<input type="text" name="username" placeholder="un" />
-	<input type="text" name="path" placeholder="path" />
-	<input type="submit" name="submit" />
-</form>
+<div style="text-align:center;">
+
+	<h2 style="font-size: 26px; padding : 10px;padding-top: 20px;">
+	Please read the basic guidelines before posting!</h2>
+
+	<form class="testform" method="POST">
+		<input class="inptext" type="text" name="title" placeholder="Post Title" />
+		<br/>
+		<textarea class="inptext longtext" name="desc" placeholder="Description" rows="10"></textarea>
+		<br/>
+		<input class="inptext" type="text" name="username" placeholder="Name (or leave blank for anon)" />
+		<br/>
+		<input class="inptext" type="text" name="path" placeholder="Image URL (leave blank for none)" />
+		<br/>
+		<label class="inptext">Design <input type="checkbox" name="design"></label>
+		<label class="inptext">Software <input type="checkbox" name="software"></label>
+		<label class="inptext">Discussion <input type="checkbox" name="discussion"></label>
+		<br/>
+		<input class="inptext" style="width: 140px;" type="submit" name="submit" />
+	</form>
+
+</div>
 
 {% endblock %}
 

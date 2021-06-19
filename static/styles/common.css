@@ -34,4 +34,36 @@ header {
 
 .header-links {
 	cursor: pointer;
+	text-decoration: none;
+	color: #FFF
+}
+
+.testform {
+	align-items: center;
+}
+
+.inptext {
+	font-size: 20px; 
+	padding: 2px;
+	margin: 5px;
+	width: 400px;
+}
+
+.longtext {
+font-family: 'Lato', sans-serif;
+
+}
+
+.postimg {
+	width: 20%;
+	height: 20%;
+}
+
+.nothing {
+	width: 1000px;
+	height: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -140px;
 }
