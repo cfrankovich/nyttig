@@ -31,3 +31,7 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+
+.header-links {
+	cursor: pointer;
+}

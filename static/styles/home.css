@@ -1,3 +1,7 @@
+.header-title-home {
+	text-decoration: underline;
+}
+
 .path-cont {
 	position: fixed;
 	background-color: #282a36;
@@ -16,7 +20,12 @@
 }
 
 .request {
-	border: 2px solid lime;
+	/* 282a36 */
+	padding: 5px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	background-color: #171925;
+	border-bottom: solid 2px #DADADA;	
 }
 
 .nothing {
