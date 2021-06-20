@@ -12,6 +12,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 app.permanent_session_lifetime = timedelta(days=5)
 
+
 class REQUESTS2(db.Model):
 	__tablename__ = 'Requests'
 	_id = db.Column('id', db.Integer, primary_key=True) # id of post (will be used to find posts)
@@ -99,6 +100,15 @@ def discussion():
 	REQUESTS2.query.all()
 	sendme = getlist(REQUESTS2.query.all(), 'discussion')
 	return render_template('home.html', reqs=sendme, pagetitle='Discussion Page', pagepath='Disc')
+
+
+@app.route('/<postid>/')
+def reqpage(postid):
+	for req in REQUESTS2.query.all():
+		print(req._id)
+		if req._id == int(postid):
+			return postid
+	return 'lol'
 
 
 @app.route('/delete/')

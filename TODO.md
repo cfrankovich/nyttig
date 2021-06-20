@@ -1,4 +1,5 @@
 # TODO
-- be able to click on request
-- date on post
+- page for each thing
 - comments
+- session thing so no infinite posts
+- footer
