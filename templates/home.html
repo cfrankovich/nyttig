@@ -4,15 +4,7 @@
 {{ pagetitle }}
 {% endblock %}
 
-{% block style %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/home.css') }}" />
-{% endblock %}
-
 {% block content %}
-
-<div class="path-cont">
-	<h5 class="path-text">\\ {{ pagepath }}</h5>
-</div>
 
 {% if reqs %}
 {% for r in reqs %}
@@ -30,11 +22,5 @@
 {% else %}
 <h2 class="nothing">Nothing to see here yet :(</h2>
 {% endif %}
-
-<form class="create-field" method="POST">
-	<h2 class="create-field-title">Make a Request</h2>
-	<input class="createbtn" type="submit" value="Create"  name="createreq" />
-	<h5 class="create-field-splash">No account required!</h5>
-</form>
 
 {% endblock %}

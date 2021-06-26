@@ -6,9 +6,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
-	
-	{% block style %}
-	{% endblock %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/home.css') }}" />
 	
 	<title>{% block title %} {% endblock %}</title>	
 </head>
@@ -22,8 +20,19 @@
 	<a class="header-links" href='/discussion'><h3 class="header-title-random">Discussion</h3></a>
 	</header>
 
+	<div class="path-cont">
+	        <h5 class="path-text">\\ {{ pagepath }}</h5>
+	</div>
+
 	{% block content %}
 	{% endblock %}
+
+	<form class="create-field" method="POST">
+	        <h2 class="create-field-title">Make a Request</h2>
+		<input class="createbtn" type="submit" value="Create"  name="createreq" />
+		<h5 class="create-field-splash">No account required!</h5>
+	</form>
+
 
 	<footer>
 	</footer>
