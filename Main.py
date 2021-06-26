@@ -30,23 +30,6 @@ class REQUESTS2(db.Model):
 		self.tag = tag
 
 
-class USER(db.Model):
-	__tablename__ = '__Accounts__'
-	_id = db.Column('id', db.Integer, primary_key=True) # user id
-	username = db.Column('username', db.String(50)) # 50 char username
-	password = db.Column('password', db.String(100)) # 100 char password
-	verified = db.Column('verified', db.Boolean()) # if they are verified
-	description = db.Column('description', db.String(1000)) # 1000 char max
-	img = db.Column('path', db.String(255)) # path to user's image
-
-	def __init__(self, un, pw, v, d, p):
-		self.username = un
-		self.password = pw
-		self.verified = v
-		self.description = d
-		self.img = p
-
-
 def isimage(url):
 	formats = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg']
 	try:
@@ -102,12 +85,14 @@ def discussion():
 	return render_template('home.html', reqs=sendme, pagetitle='Discussion Page', pagepath='Disc')
 
 
-@app.route('/<postid>/')
-def reqpage(postid):
+@app.route('/<topic>/<postid>/', methods=['POST', 'GET'])
+def reqpage(topic, postid):
+	if request.method == 'POST':
+		return redirect(url_for('create'))
+
 	for req in REQUESTS2.query.all():
-		print(req._id)
-		if req._id == int(postid):
-			return postid
+		if req._id == int(postid) and (topic in req.tag.lower() or topic == 'home'):
+			return render_template('singlepage.html', r=req, pagepath=f'{topic} \\\\ {req._id}')
 	return 'lol'
 
 

@@ -16,6 +16,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
     border-bottom: 3px solid #FFF;
 }
 .header-title-main {

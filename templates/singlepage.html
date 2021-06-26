@@ -3,8 +3,31 @@
 Request {{ postid }}
 {% endblock %}
 
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/home.css') }}" />
+{% endblock %}
+
 {% block content %}
 
+<div class="path-cont">
+	<h5 class="path-text">\\ {{ pagepath }}</h5>
+</div>
 
+<div class="request" style="display: block;text-align: center; align-items: center; margin: auto;">
+	{% if r.img %}
+	<img src="{{ r.img }}" class="postimg" style="padding-right: 10px"></img>
+	{% endif %}
+	<div>
+		<h2 class="request-title">{{ r.title }}</h2>
+		<h3 class="request-author">{{ r.user }} - {{ r.tag }}</h3>
+		<p class="request-desc">{{ r.description }}</p>
+	</div>
+</div>
+
+<form class="create-field" method="POST">
+        <h2 class="create-field-title">Make a Request</h2>
+	<input class="createbtn" type="submit" value="Create"  name="createreq" />
+	<h5 class="create-field-splash">No account required!</h5>
+</form>
 
 {% endblock %}
