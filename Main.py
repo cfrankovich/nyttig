@@ -107,11 +107,14 @@ def delete():
 def create():
 	returnme = 'Create Page'
 	if request.method == 'POST':
-		title = request.form['title']
-		desc = request.form['desc']
-		un = request.form['username']
-		path = request.form['path']
-		tags = ''
+		try:
+			title = request.form['title']
+			desc = request.form['desc']
+			un = request.form['username']
+			path = request.form['path']
+			tags = ''
+		except:
+			return render_template('create.html', display=returnme)
 		try:
 			des = request.form['design']
 			tags += 'design  '
